@@ -1,0 +1,14 @@
+import { Router } from "express";
+import AdminRouter from "./admin.routes.js";
+
+const MainRouter = Router();
+
+// router level middleware
+MainRouter.use("/admin", AdminRouter);
+// MainRouter.use("/payment", AdminRouter)
+// MainRouter.use("/user", AdminRouter)
+// MainRouter.use("/seller", AdminRouter)
+
+export default MainRouter;
+
+// localhost:8000/api/v1/admin/health-check
