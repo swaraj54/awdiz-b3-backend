@@ -1,7 +1,12 @@
 import express, { application } from "express";
 import MainRouter from "./routes/index.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import UserSchema from "./models/user.schema.js";
 
 const app = express();
+
+dotenv.config();
 
 // use - middleware to parse JSON bodies
 // application level middleware
@@ -84,6 +89,42 @@ app.delete("/delete-user", (req, res) => {
   }
   res.json({ message: "User deleted successfully", users: usersList });
 });
+
+app.get("/add-user", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Name, email and password are required" });
+    }
+
+    const newUser = new UserSchema({
+      name: name,
+      email: email,
+      password: password,
+    });
+    console.log(newUser, "newUser");
+
+    await newUser.save(); 
+    
+    return res
+      .status(201)
+      .json({ message: "User added successfully", user: newUser });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+mongoose
+  .connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log("Error connecting to MongoDB", err);
+  });
 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
