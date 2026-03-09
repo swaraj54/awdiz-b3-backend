@@ -102,15 +102,59 @@ app.get("/add-user", async (req, res) => {
     const newUser = new UserSchema({
       name: name,
       email: email,
-      password: password,
+      password,
     });
     console.log(newUser, "newUser");
 
-    await newUser.save(); 
-    
+    await newUser.save();
+
     return res
       .status(201)
       .json({ message: "User added successfully", user: newUser });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.post("/get-users", async (req, res) => {
+  try {
+    const users = await UserSchema.find({ isActive: true });
+    return res
+      .status(200)
+      .json({ users: users, message: "Users fetched successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.patch("/update-user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ message: "Email is required" });
+
+    const updatedUser = await UserSchema.findByIdAndUpdate(
+      userId,
+      { email },
+      { new: true },
+    );
+    console.log(updatedUser, "updatedUser");
+    return res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.delete("/delete-user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // await UserSchema.findByIdAndDelete(userId);
+    await UserSchema.findByIdAndUpdate(userId, { isActive: false });
+    return res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal Server Error" });
