@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { HealthCheck } from "../controllers/admin.controllers.js";
 
 const AdminRouter = Router();
 
-AdminRouter.get("/health-check", (req, res) => {
-  res.send("Admin route is working");
-});
+AdminRouter.get("/health-check", HealthCheck);
 
 export default AdminRouter;
