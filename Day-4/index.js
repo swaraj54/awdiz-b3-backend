@@ -3,6 +3,7 @@ import MainRouter from "./routes/index.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import UserSchema from "./models/user.schema.js";
+import ProductSchema from "./models/product.schema.js";
 
 const app = express();
 dotenv.config();

@@ -1,12 +1,14 @@
 import { Router } from "express";
 import AdminRouter from "./admin.routes.js";
 import UserRouter from "./user.routes.js";
+import ProductRouter from "./product.routes.js";
 
 const MainRouter = Router();
 
 // router level middleware
 MainRouter.use("/admin", AdminRouter);
 MainRouter.use("/user", UserRouter);
+MainRouter.use("/product", ProductRouter);
 // MainRouter.use("/payment", AdminRouter)
 // MainRouter.use("/user", AdminRouter)
 // MainRouter.use("/seller", AdminRouter)
