@@ -3,8 +3,8 @@ import { Login, Register } from "../controllers/user.controllers.js";
 
 const UserRouter = Router();
 
-UserRouter.get("/register", Register);
+UserRouter.post("/register", Register);
 
-UserRouter.get("/login", Login);
+UserRouter.post("/login", Login);
 
 export default UserRouter;

@@ -12,6 +12,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Apple smartphone with A15 chip",
         category: "Electronics",
         stock: 15,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Samsung Galaxy S23",
@@ -19,6 +20,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Samsung flagship smartphone",
         category: "Electronics",
         stock: 12,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "MacBook Air M2",
@@ -26,6 +28,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Apple laptop with M2 chip",
         category: "Electronics",
         stock: 8,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Dell XPS 13",
@@ -33,6 +36,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Premium ultrabook from Dell",
         category: "Electronics",
         stock: 10,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Sony WH-1000XM5",
@@ -40,6 +44,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Noise cancelling headphones",
         category: "Electronics",
         stock: 20,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Apple Watch Series 9",
@@ -47,6 +52,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Smartwatch with health tracking",
         category: "Electronics",
         stock: 18,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Nike Running Shoes",
@@ -54,6 +60,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Comfortable running shoes",
         category: "Footwear",
         stock: 30,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Adidas Sneakers",
@@ -61,6 +68,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Stylish everyday sneakers",
         category: "Footwear",
         stock: 25,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Levi's Denim Jacket",
@@ -68,6 +76,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Classic denim jacket",
         category: "Clothing",
         stock: 14,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Puma T-Shirt",
@@ -75,6 +84,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Casual cotton t-shirt",
         category: "Clothing",
         stock: 40,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "HP Pavilion Laptop",
@@ -82,6 +92,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Mid-range laptop for everyday use",
         category: "Electronics",
         stock: 9,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Lenovo ThinkPad E14",
@@ -89,6 +100,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Business laptop with durability",
         category: "Electronics",
         stock: 7,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Canon EOS 1500D",
@@ -96,6 +108,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Entry level DSLR camera",
         category: "Electronics",
         stock: 11,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Boat Rockerz 550",
@@ -103,6 +116,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Wireless over-ear headphones",
         category: "Electronics",
         stock: 35,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Logitech Wireless Mouse",
@@ -110,6 +124,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Ergonomic wireless mouse",
         category: "Accessories",
         stock: 50,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Mechanical Keyboard",
@@ -117,6 +132,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "RGB mechanical gaming keyboard",
         category: "Accessories",
         stock: 22,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Samsung 27 inch Monitor",
@@ -124,6 +140,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Full HD LED monitor",
         category: "Electronics",
         stock: 13,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Mi Power Bank 20000mAh",
@@ -131,6 +148,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Fast charging power bank",
         category: "Accessories",
         stock: 28,
+        seller: "69b51459bedb19aed18d9098",
       },
       {
         name: "Backpack for Laptop",
@@ -138,6 +156,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Water resistant laptop backpack",
         category: "Bags",
         stock: 33,
+        seller: "69b5144abedb19aed18d9095",
       },
       {
         name: "Casio Analog Watch",
@@ -145,6 +164,7 @@ ProductRouter.get("/add-product", async (req, res) => {
         description: "Classic analog wrist watch",
         category: "Accessories",
         stock: 19,
+        seller: "69b51459bedb19aed18d9098",
       },
     ];
 
@@ -165,41 +185,27 @@ ProductRouter.get("/add-product", async (req, res) => {
 ProductRouter.get("/advance-quaries", async (req, res) => {
   try {
     const { searchedProduct } = req.body;
-    
-    const products = await ProductSchema.find({}).sort({ price: 1 });
-    const products = await ProductSchema.find({}).sort({ price: -1 });
 
+    // const products = await ProductSchema.find({}).sort({ price: 1 });
+    // const products = await ProductSchema.find({}).sort({ price: -1 });
 
+    // const products = await ProductSchema.find({}).limit(2);
+    // const products = await ProductSchema.find({}).sort({ price: -1 }).limit(2);
 
+    // const pageNumber = 5;
+    // const products = await ProductSchema.find({})
+    //   .skip((pageNumber - 1) * 5)
+    //   .limit(5);
 
+    // const products = await ProductSchema.find({
+    //   price: { $gte: 999 },
+    // });
 
-    const products = await ProductSchema.find({}).limit(2);
-    const products = await ProductSchema.find({}).sort({ price: -1 }).limit(2);
-
-
-
-
-    const pageNumber = 5;
-    const products = await ProductSchema.find({})
-      .skip((pageNumber - 1) * 5)
-      .limit(5);
-
-
-
-
-    const products = await ProductSchema.find({
-      price: { $gte: 999 },
-    });
-
-
-    const products = await ProductSchema.find({}, "name price stock -_id");
-    const products = await ProductSchema.find(
-      {},
-      { name: 1, _id: 0, price: 1 },
-    );
-
-
-
+    // const products = await ProductSchema.find({}, "name price stock -_id");
+    // const products = await ProductSchema.find(
+    //   {},
+    //   { name: 1, _id: 0, price: 1 },
+    // );
 
     const products = await ProductSchema.find({
       name: { $regex: searchedProduct, $options: "i" },
@@ -213,6 +219,23 @@ ProductRouter.get("/advance-quaries", async (req, res) => {
     res.status(500).json({
       success: false,
       message: error.message,
+    });
+  }
+});
+
+ProductRouter.get("/get-products", async (req, res) => {
+  try {
+    const products = await ProductSchema.find().populate(
+      "seller",
+      "name email -_id",
+    );
+    res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
     });
   }
 });
