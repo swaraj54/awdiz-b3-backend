@@ -15,6 +15,12 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1", MainRouter);
 
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Route not found",
+  });
+});
+
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {

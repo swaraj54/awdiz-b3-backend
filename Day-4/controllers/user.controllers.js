@@ -1,5 +1,6 @@
 import UserSchema from "../models/user.schema.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const Register = async (req, res) => {
   try {
@@ -56,11 +57,29 @@ export const Login = async (req, res) => {
         message: "Invalid password",
       });
     }
-    // jwt token , cookies set 
+    // jwt token , cookies set
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+
+    res.cookie("token", token);
+
     return res.status(200).json({
       message: "User logged in successfully",
-      user,
+      userData: { name: user.name, role: user.role },
+      token,
     });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error in login route",
+      error: error.message,
+    });
+  }
+};
+
+export const AddCart = async (req, res) => {
+  try {
+    console.log(req.userData,"req.userData")
+    res.send(true)
   } catch (error) {
     return res.status(500).json({
       message: "Error in login route",
