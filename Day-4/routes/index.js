@@ -8,7 +8,7 @@ const MainRouter = Router();
 
 // router level middleware
 MainRouter.use("/admin", AdminRouter);
-MainRouter.use("/user", UserRouter);
+MainRouter.use("/user", UserRouter); // login register
 MainRouter.use("/product", ProductRouter);
 MainRouter.use("/operators", OperatorRouter)
 // MainRouter.use("/user", AdminRouter)

@@ -227,11 +227,28 @@ ProductRouter.get("/get-products", async (req, res) => {
   try {
     const products = await ProductSchema.find().populate(
       "seller",
-      "name email -_id",
+      "name email",
     );
     res.status(200).json({
       success: true,
       data: products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+    });
+  }
+});
+
+ProductRouter.get("/get-single-product/:id", async (req, res) => {
+  try {
+    const product = await ProductSchema.findById(req.params.id).populate(
+      "seller",
+      "name email -_id",
+    );
+    res.status(200).json({
+      success: true,
+      data: product,
     });
   } catch (error) {
     res.status(500).json({
